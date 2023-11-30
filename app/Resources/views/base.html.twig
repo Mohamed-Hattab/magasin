@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+
+            <link rel="stylesheet" href="{{ asset('/bundles/css/style.css') }}">
+
+        {% block stylesheets %}
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta name="description" content="">
+            <meta name="author" content="Dashboard">
+            <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+
+            <title>DASHGUM - FREE Bootstrap Admin Template</title>
+
+            <!-- Bootstrap core CSS -->
+            <link href="/bundles/assets/css/bootstrap.css" rel="stylesheet">
+            <!--external css-->
+            <link href="/bundles/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+            <link rel="stylesheet" type="text/css" href="/bundles/assets/js/gritter/css/jquery.gritter.css" />
+            <link rel="stylesheet" type="text/css" href="/bundles/assets/lineicons/style.css">
+
+            <!-- Custom styles for this template -->
+            <link href="/bundles/assets/css/style.css" rel="stylesheet">
+            <link href="/bundles/assets/css/style-responsive.css" rel="stylesheet">
+
+            <script src="/bundles/assets/js/chart-master/Chart.js"></script>
+            <script src="{{ asset('/bundles/bootstrap/js/jquery.js') }}" ></script>
+
+            <script src=" {{ asset('/bundles/bootstrap/js/bootstrap.min.js') }}" ></script>
+            <script>
+                function myFunction() {
+                    document.getElementById("myDropdown").classList.toggle("open");
+                }
+            </script>
+
+            <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+            <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+            <![endif]-->
+        {% endblock %}
+        <meta charset="UTF-8">
+        <title>Admin</title>
+    </head>
+    <body>
+    <!-- **********************************************************************************************************************************************************
+    TOP BAR CONTENT & NOTIFICATIONS
+    *********************************************************************************************************************************************************** -->
+    <!--header start-->
+    <header class="header black-bg">
+        <div class="sidebar-toggle-box">
+            <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation" style="color: #00c5de"></div>
+        </div>
+        <!--logo start-->
+        <a href="/adminhome" class="logo"><b>SEBCOM</b></a>
+        <!--logo end-->
+
+        <div class="nav notify-row" id="top_menu">
+            <!--  notification start -->
+            <ul class="nav top-menu">
+                <!-- inbox dropdown start-->
+                {% if msg is defined %}
+                <li id="myDropdown" class="dropdown">
+                    <a data-toggle="dropdown" style="color:#ffffff;background-color: #68dff0;" onclick="myFunction()" class="dropdown-toggle" href="#">
+                        <i class="fa fa-envelope-o"></i>
+                        <span class="badge bg-theme" style="background-color: #424a5d;color: #68dff0;">{{ msg|length }}</span>
+                    </a>
+                    <ul class="dropdown-menu extended inbox">
+                        <div class="notify-arrow notify-arrow-green"></div>
+                        <li>
+                            <p class="green">Nouveaux messages recus</p>
+                        </li>
+                            {% for m in msg %}
+                        <li>
+                            <a href="mail?x={{ m.id }}">
+                                <span class="subject">
+                                    <span class="from">{{ m.nom }}</span>
+                                    <span class="time">{{ m.date }}</span>
+                                    </span>
+                                <span class="message" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
+                                        {{ m.message }}
+                                    </span>
+                            </a>
+                        </li>
+                        {% endfor %}
+                        
+                    </ul>
+                </li>
+                {% endif %}
+                <!-- inbox dropdown end -->
+            </ul>
+            <!--  notification end -->
+        </div>
+
+
+        <div class="top-menu">
+            <ul class="nav pull-right top-menu">
+                <li><a class="logout" href="admin">Déconnexion</a></li>
+            </ul>
+        </div>
+    </header>
+    <!--header end-->
+
+
+
+    <!-- **********************************************************************************************************************************************************
+    MAIN SIDEBAR MENU
+    *********************************************************************************************************************************************************** -->
+    <!--sidebar start-->
+    <aside>
+        <div id="sidebar"  class="nav-collapse ">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+
+                <p class="centered"><a href="/adminhome"><img src="/bundles/assets/img/ui-sam.jpg"  width="100"></a></p>
+                <h5 class="centered">{{ name }} </h5>
+
+
+                <li class="mt">
+                    <a class="active" href="/adminhome">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="sub-menu">
+                    <a  href="/ajoutcat">
+                         <i class="fa fa-desktop"></i>
+                    <span>Gerer Categories</span></a>
+
+                </li>
+
+                <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-tasks"></i>
+                        <span>Gerer Articles</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a  href="/articleatt">Articles en attente</a></li>
+                        <li><a  href="/articleacc">Articles accepté</a></li>
+                    </ul>
+                </li>
+
+                <li class="sub-menu">
+                    <a href="/employe" >
+                        <i class="fa fa-book"></i>
+                        <span>Gerer Employés</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-tasks"></i>
+                        <span>Gerer Vendeurs</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a  href="/vendeuracc">Vendeurs accepté</a></li>
+                        <li><a  href="/vendeuratt">Vendeurs en attente</a></li>
+                    </ul>
+                </li>
+
+                <li class="sub-menu">
+                    <a href="javascript:;" >
+                        <i class="fa fa-car"></i>
+                        <span>Gerer Livraison</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a  href="/commandeacc">Commande acceptés</a></li>
+                        <li><a  href="/commandeliv">Commande livrés</a></li>
+                    </ul>
+                </li>
+
+                <li class="sub-menu">
+                    <a  href="/slideshow">
+                        <i class="fa fa-picture-o"></i>
+                        <span>Gerer SlideShow</span></a>
+
+                </li>
+
+                <li class="sub-menu">
+                    <a href="/livreur" >
+                        <i class="fa fa-truck"></i>
+                        <span>Gerer Livreur</span>
+                    </a>
+                </li>
+
+
+
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+    <!--sidebar end-->
+
+
+        {% block body %}
+
+
+
+
+        {% endblock %}
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,291 @@
+{% extends 'front.html.twig' %}
+
+{% block body %}
+
+<!-- banner -->
+{% if type is defined and type=="vendeuracc" %}
+    <div style="background-color: #ccc;padding-bottom: 30px; " >
+    <h3 style="text-align: center;padding-top: 70px;">DASHBOARD</h3>
+    <div class="row">
+        <div class="col-md-12">
+
+                <div class="panel-body" style="margin-left: 95px;">
+                    <div class="row">
+                        <div class="col-xs-6 col-md-12">
+                            <a href="/modifierprofile/{{ id }}" class="btn btn-primary btn-lg" role="button"><span style="padding-top:40px;" class="glyphicon glyphicon-user"></span> <br/>Profile</a>
+                            <a href="/mesarticles" class="btn btn-primary btn-lg" role="button"><span style="padding-top:40px;" class="glyphicon glyphicon-list-alt"></span> <br/>Mes Annonces</a>
+                            <a href="/ajoutarticle" class="btn btn-info btn-lg" role="button"><span style="padding-top:40px;" class="glyphicon glyphicon-plus"></span> <br/>Déposer Annonce</a>
+                            <a href="/venteatt" class="btn btn-primary btn-lg" role="button"><span style="padding-top:40px;" class="glyphicon glyphicon-time"></span> <br/>Ventes en attente</a>
+                            <a href="/venteacc" class="btn btn-primary btn-lg" role="button"><span style="padding-top:40px;" class="glyphicon glyphicon-ok"></span> <br/>Ventes accepté</a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="w3l_related_products">
+        <div class="container">
+            <h3>Vos Produits les plus vendus</h3>
+
+            <div class="w3ls_mobiles_grid_right_grid3">
+                {% set x = 0 %}
+                {% for c in art if x<6 %}
+                    {% if c.type=="articleacc" %}
+                        {% set x=x+1 %}
+                        <div class="col-md-4 agileinfo_new_products_grid agileinfo_new_products_grid_mobiles">
+                            <div class="agile_ecommerce_tab_left mobiles_grid">
+                                <img src="/uploads/articles/{{ c.image }}" style="height:300px;width:300px;" alt=" " class="img-responsive">
+                                <h5><a href="/view?id={{ c.id }}">{{ c.titre }}</a></h5>
+                                <div class="simpleCart_shelfItem">
+                                    <p> <i class="item_price">{{ c.prix }} TND</i></p>
+                                    <form action="#" method="post">
+                                        <input type="hidden" name="cmd" value="_cart">
+                                        <input type="hidden" name="add" value="1">
+                                        <input type="hidden" name="w3ls_item" value="{{ c.titre }}">
+                                        <input type="hidden" name="amount" value="{{ c.prix }}">
+                                        <button type="submit" class="w3ls-cart">Add to cart</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+                <div class="clearfix"> </div>
+            </div>
+
+            <br>
+
+
+        </div>
+    </div>
+{% else %}
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width: 100%">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                {% if slide is defined %}
+                    {% set i=0 %}
+                    {% for c in slide %}
+                        {%  set i=i+1 %}
+                        {% if i==1 %}
+                            <li data-target="#myCarousel" data-slide-to="{{ i-1 }}" class="active"></li>
+                        {% else %}
+                            <li data-target="#myCarousel" data-slide-to="{{ i-1 }}"></li>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+
+
+
+
+            </ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                {% if slide is defined %}
+                    {% set i=0 %}
+                {% for c in slide %}
+                    {%  set i=i+1 %}
+                    {% if i==1 %}
+                <div class="item active">
+                    <img src="/uploads/slideshow/{{ c.image }}" alt="New york" style="width:100%;">
+                </div>
+                        {% else %}
+                            <div class="item">
+                                <img src="/uploads/slideshow/{{ c.image }}" alt="New york" style="width:100%;">
+                            </div>
+                        {% endif %}
+                {% endfor %}
+                {% endif %}
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+<!-- //banner -->
+<!-- banner-bottom -->
+    <div class="categories">
+        <div class="container">
+            <div class="col-md-2 focus-grid">
+                <a href="/produit?cat=Téléphones">
+                    <div class="focus-border">
+                        <div class="focus-layout">
+                            <div class="focus-image"><i class="fa fa-mobile"></i></div>
+                            <h4 class="clrchg">Téléphones</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-2 focus-grid">
+                <a href="/produit?cat=Ordinateurs%20portables">
+                    <div class="focus-border">
+                        <div class="focus-layout">
+                            <div class="focus-image"><i class="fa fa-laptop"></i></div>
+                            <h4 class="clrchg"> Ordinateurs portables</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-2 focus-grid">
+                <a href="/produit?cat=Voitures">
+                    <div class="focus-border">
+                        <div class="focus-layout">
+                            <div class="focus-image"><i class="fa fa-car"></i></div>
+                            <h4 class="clrchg">Voitures</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-2 focus-grid">
+                <a href="/produit?cat=Motos">
+                    <div class="focus-border">
+                        <div class="focus-layout">
+                            <div class="focus-image"><i class="fa fa-motorcycle"></i></div>
+                            <h4 class="clrchg">Motos</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-2 focus-grid">
+                <a href="/produit?cat=Jeux%20vidéo%20et%20Consoles">
+                    <div class="focus-border">
+                        <div class="focus-layout">
+                            <div class="focus-image"><i class="fa fa-gamepad"></i></div>
+                            <h4 class="clrchg">Jeux vidéo et Consoles</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-2 focus-grid">
+                <a href="/produit?cat=Appareils%20photo%20et%20Caméras">
+                    <div class="focus-border">
+                        <div class="focus-layout">
+                            <div class="focus-image"><i class="fa fa-camera"></i></div>
+                            <h4 class="clrchg">Appareils photo et Caméras
+                            </h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-2 focus-grid">
+                <a href="/produit?cat=Télévisions">
+                    <div class="focus-border">
+                        <div class="focus-layout">
+                            <div class="focus-image"><i class="fa fa-tv"></i></div>
+                            <h4 class="clrchg">Télévisions</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-2 focus-grid">
+                <a href="/produit?cat=Vêtements">
+                    <div class="focus-border">
+                        <div class="focus-layout">
+                            <div class="focus-image"><i class="fa fa-black-tie"></i></div>
+                            <h4 class="clrchg">Vêtements</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-2 focus-grid">
+                <a href="/produit?cat=Montres%20et%20Bijoux">
+                    <div class="focus-border">
+                        <div class="focus-layout">
+                            <div class="focus-image"><i class="fa fa-diamond"></i></div>
+                            <h4 class="clrchg">Montres et Bijoux</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-2 focus-grid">
+                <a href="/produit?cat=Instruments%20de%20musique">
+                    <div class="focus-border">
+                        <div class="focus-layout">
+                            <div class="focus-image"><i class="fa fa-headphones"></i></div>
+                            <h4 class="clrchg">Instruments de musique</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-2 focus-grid">
+                <a href="/produit?cat=Meubles%20et%20Décoration">
+                    <div class="focus-border">
+                        <div class="focus-layout">
+                            <div class="focus-image"><i class="fa fa-home"></i></div>
+                            <h4 class="clrchg">Meubles et Décoration</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-2 focus-grid">
+                <a href="/produit?cat=%20Voyages%20et%20Billetterie">
+                    <div class="focus-border">
+                        <div class="focus-layout">
+                            <div class="focus-image"><i class="fa fa-plane"></i></div>
+                            <h4 class="clrchg">Voyages et Billetterie</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="w3l_related_products">
+        <div class="container">
+            <h3>Related Products</h3>
+
+            <div class="w3ls_mobiles_grid_right_grid3">
+                {% set x = 0 %}
+                {% for c in art if x<6 %}
+                    {% if c.type=="articleacc" %}
+                    {% set x=x+1 %}
+                <div class="col-md-4 agileinfo_new_products_grid agileinfo_new_products_grid_mobiles">
+                    <div class="agile_ecommerce_tab_left mobiles_grid">
+                        <img src="/uploads/articles/{{ c.image }}" style="height:300px;width:300px;" alt=" " class="img-responsive">
+                        <h5><a href="/view?id={{ c.id }}">{{ c.titre }}</a></h5>
+                        <div class="simpleCart_shelfItem">
+                            <p> <i class="item_price">{{ c.prix }} TND</i></p>
+                            <form action="#" method="post">
+                                <input type="hidden" name="cmd" value="_cart">
+                                <input type="hidden" name="add" value="1">
+                                <input type="hidden" name="w3ls_item" value="{{ c.titre }}">
+                                <input type="hidden" name="amount" value="{{ c.prix }}">
+                                <button type="submit" class="w3ls-cart">Add to cart</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+
+                <div class="clearfix"> </div>
+            </div>
+
+            <br>
+
+
+        </div>
+    </div>
+<!-- //banner-bottom -->
+{% endif %}
+<!-- banner-bottom1 -->
+
+            <script src="bundles/front/js/jquery.countdown.js"></script>
+            <script src="bundles/front/js/script.js"></script>
+
+
+
+<!-- //banner-bottom1 -->
+
+
+
+
+{% endblock %}

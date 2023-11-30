@@ -1,0 +1,207 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    {% block javascripts %}
+
+        {#<script type="text/javascript" src="{{ asset('bundles/js/tableSort.js')}}"></script>#}
+
+    {% endblock %}
+
+    <section id="container" >
+
+
+        <!-- **********************************************************************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper">
+
+
+                <div class="col-md-12">
+                    <div class="content-panel">
+
+                        <div>
+
+                            <form>
+
+
+
+
+
+                                <h4><i class="fa fa-angle-right"></i> Localiser Mr {{ prenom }} </h4><hr>
+
+
+
+                                <!-- Un élément HTML pour recueillir l’affichage -->
+                                <div id="maposition" style="display: none;"></div>
+
+                                <!-- Un élément HTML pour recueillir la carte -->
+                                <div id="map" style="width:1000px;height:480px"></div>
+
+                                <!-- Chargement de l'API Google maps -->
+                                <script src="https://maps.google.com/maps/api/js?sensor=false"></script>
+
+                                <script>
+
+                                    // Position par défaut
+                                    var centerpos = new google.maps.LatLng(48.579400,7.7519);
+
+                                    // Ansi que des options pour la carte, centrée sur latlng
+                                    var optionsGmaps = {
+                                        center:centerpos,
+                                        navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
+                                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                                        zoom: 15
+                                    };
+
+                                    // Initialisation de la carte avec les options
+                                    var map = new google.maps.Map(document.getElementById("map"), optionsGmaps);
+
+                                    if(navigator.geolocation) {
+
+                                        // Fonction de callback en cas de succès
+                                        function affichePosition(position) {
+
+                                            var infopos = "Position déterminée : <br>";
+                                            infopos += "Latitude : "+position.coords.latitude +"<br>";
+                                            infopos += "Longitude: "+position.coords.longitude+"<br>";
+                                            infopos += "Altitude : "+position.coords.altitude +"<br>";
+                                            document.getElementById("maposition").innerHTML = infopos;
+                                            var myLatlng = new google.maps.LatLng({{ lat }},{{ lon  }});
+
+                                            var marker = new google.maps.Marker({
+                                                position: myLatlng,
+                                                title:"Mr {{ prenom }}",
+                                                icon:'/bundles/images/icon.png'
+                                            });
+                                            marker.setMap(map);
+
+                                            // On instancie un nouvel objet LatLng pour Google Maps
+                                            var latlng = new google.maps.LatLng({{ lat }}, {{ lon }});
+
+                                            // Ajout d'un marqueur à la position trouvée
+
+
+                                            map.panTo(latlng);
+
+                                        }
+
+                                        // Fonction de callback en cas d’erreur
+                                        function erreurPosition(error) {
+                                            var info = "Erreur lors de la géolocalisation : ";
+                                            switch(error.code) {
+                                                case error.TIMEOUT:
+                                                    info += "Timeout !";
+                                                    break;
+                                                case error.PERMISSION_DENIED:
+                                                    info += "Vous n’avez pas donné la permission";
+                                                    break;
+                                                case error.POSITION_UNAVAILABLE:
+                                                    info += "La position n’a pu être déterminée";
+                                                    break;
+                                                case error.UNKNOWN_ERROR:
+                                                    info += "Erreur inconnue";
+                                                    break;
+                                            }
+                                            document.getElementById("maposition").innerHTML = info;
+                                        }
+
+                                        navigator.geolocation.getCurrentPosition(affichePosition,erreurPosition);
+
+                                    } else {
+
+                                        alert("Ce navigateur ne supporte pas la géolocalisation");
+
+                                    }
+
+                                </script>
+
+
+
+
+
+
+                            </form>
+
+
+
+
+                        </div>
+                    </div>
+                </div><!-- col-lg-12-->
+                </div>
+
+
+                </div><!-- /col-lg-12 -->
+                </div>
+
+                <div class="row">
+                    <!-- /col-lg-9 END SECTION MIDDLE -->
+
+
+                    <!-- **********************************************************************************************************************************************************
+                    RIGHT SIDEBAR CONTENT
+                    *********************************************************************************************************************************************************** -->
+
+                    <!-- /col-lg-3 -->
+                </div><! --/row -->
+            </section>
+        </section>
+
+        <!--main content end-->
+        <!--footer start-->
+        <footer class="site-footer">
+            <div class="text-center">
+                2019 - SEBCOM.tn
+                <a href="index.html#" class="go-top">
+                    <i class="fa fa-angle-up"></i>
+                </a>
+            </div>
+        </footer>
+        <!--footer end-->
+    </section>
+
+    <!-- js placed at the end of the document so the pages load faster -->
+
+
+    <!--common script for all pages-->
+
+
+    <script type="application/javascript">
+        $(document).ready(function () {
+            $("#date-popover").popover({html: true, trigger: "manual"});
+            $("#date-popover").hide();
+            $("#date-popover").click(function (e) {
+                $(this).hide();
+            });
+
+            $("#my-calendar").zabuto_calendar({
+                action: function () {
+                    return myDateFunction(this.id, false);
+                },
+                action_nav: function () {
+                    return myNavFunction(this.id);
+                },
+                ajax: {
+                    url: "show_data.php?action=1",
+                    modal: true
+                },
+                legend: [
+                    {type: "text", label: "Special event", badge: "00"},
+                    {type: "block", label: "Regular event", }
+                ]
+            });
+        });
+
+
+        function myNavFunction(id) {
+            $("#date-popover").hide();
+            var nav = $("#" + id).data("navigation");
+            var to = $("#" + id).data("to");
+            console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+        }
+    </script>
+
+{% endblock %}

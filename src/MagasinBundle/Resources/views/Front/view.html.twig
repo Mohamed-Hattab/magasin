@@ -1,0 +1,53 @@
+{% extends 'front.html.twig' %}
+
+
+
+{% block body %}
+
+
+
+    <!-- top-brands -->
+    <div class="top-brands">
+        <div class="container">
+            <h3>{{ ven }} </h3>
+            <div class="sliderfig">
+
+
+                <div class="container">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
+                        </div>
+                        <section>
+                            <div class="modal-body">
+                                <div class="col-md-5 modal_body_left">
+                                    <img src="/uploads/articles/{{ art.image }}" alt=" " class="img-responsive">
+                                </div>
+                                <div class="col-md-7 modal_body_right">
+                                    <h4>{{ art.titre }} </h4>
+                                    <p>{{ art.description }}</p>
+                                    <div class="modal_body_right_cart simpleCart_shelfItem">
+                                        <p><i class="item_price">{{ art.prix }} TND</i></p>
+                                        <form action="#" method="post">
+                                            <input type="hidden" name="cmd" value="_cart">
+                                            <input type="hidden" name="add" value="1">
+                                            <input type="hidden" name="w3ls_item" value="{{ art.titre }}">
+                                            <input type="hidden" name="amount" value="{{ art.prix }}">
+                                            <button type="submit" class="w3ls-cart">Add to cart</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- //top-brands -->
+
+
+{% endblock %}

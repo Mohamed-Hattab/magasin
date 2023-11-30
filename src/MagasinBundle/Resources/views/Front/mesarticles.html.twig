@@ -1,0 +1,102 @@
+{% extends 'front.html.twig' %}
+
+
+
+{% block body %}
+    {% block javascripts %}
+
+        <script type="text/javascript" src="{{ asset('/bundles/js/pageFunctions.js')}}"></script>
+
+    {% endblock %}
+
+
+    <!-- top-brands -->
+    <div class="top-brands">
+        <div class="container">
+            <h3>Consulter vos annonces </h3>
+            <div class="sliderfig">
+
+
+                <div class="container">
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <td colspan="1">
+                                <form action="/ajoutarticle" method="post" class="well form-horizontal"style="color:black;margin-right:10%;margin-left: 10%">
+                                    <h4><i class="fa fa-angle-right"></i> Liste Des Articles</h4><hr>
+                                    <input type="text" id="rech" style="height: 40px;width:40%;margin-left:60%" placeholder="Search.." /><br/><br/>
+                                    <table class="table table-striped table-advance table-hover" id="tab" >
+
+
+                                        <thead >
+                                        <tr>
+                                            <th><i class="fa fa-bookmark"></i> Image</th>
+                                            <th><i class="fa fa-bookmark"></i> Nom</th>
+                                            <th><i class=" fa fa-bookmark"></i> Categorie</th>
+                                            <th><i class=" fa fa-edit">Action</i></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody style="font-weight: bold">
+
+
+                                        {% if art is defined %}
+                                            {% for c in art %}
+                                                <tr>
+                                                    <td><img src="/uploads/articles/{{ c.image }}" style="height:100px;width:100px;" alt=" " class="img-responsive"></td>
+                                                    <td>{{ c.titre }}</td>
+                                                    <td>{{ c.categorie }}</td>
+                                                    <td style="text-align: center">
+                                                        <a href="/modifart/{{ c.id }}"><button type="button" class="btn btn-success btn-xs" data-toggle="modal">Modifier</button></a>
+                                                        <a><button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#exampleModal{{ c.id }}"><i class="fa fa-trash-o "></i></button></a>
+                                                    </td>
+                                                </tr>
+
+                                                {#popup#}
+                                                <div class="modal fade" id="exampleModal{{ c.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel" style="text-align: center">Confirmation de la suppression</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body" style="text-align: center">
+                                                                Etes-vous sûr de vouloir supprimer l'article <strong>{{ c.titre }}</strong> ?
+                                                            </div>
+                                                            <div class="modal-footer" style="text-align: center">
+                                                                <a href="/suppart/{{ c.id }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                            {% endfor %}
+                                        {% endif %}
+
+                                        {% if error is defined %}
+                                            <th>{{ error }}</th>
+                                            <th></th>
+                                        {% endif %}
+
+
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- //top-brands -->
+
+
+{% endblock %}

@@ -1,0 +1,370 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<style>
+    .mb{margin-bottom: -100px;}
+    .map-container-3{
+        overflow:hidden;
+        padding-bottom:56.25%;
+        position:relative;
+        height:0;
+    }
+    .map-container-3 iframe{
+        left:0;
+        top:0;
+        padding-top: 100px;
+        padding-left: 16px;
+        height:100%;
+        width:99%;
+        position:absolute;
+    }
+</style>
+<section id="container" >
+
+
+
+    <!-- **********************************************************************************************************************************************************
+    MAIN CONTENT
+    *********************************************************************************************************************************************************** -->
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+
+            <div class="row">
+                <div class="col-lg-9 main-chart">
+
+                    <div class="row mtbox">
+                        <div class="col-md-2 col-sm-2 col-md-offset-1 box0">
+                            <div class="box1">
+                                <span class="li_news" ></span>
+                                <h3>{{ usr }}</h3>
+                            </div>
+                            <p>{{ usr }} Vendeurs utilise votre Site Web</p>
+                        </div>
+                        <div class="col-md-2 col-sm-2 box0">
+                            <div class="box1">
+                                <span class="li_stack" ></span>
+                                <h3>{{ nb*10 }}</h3>
+                            </div>
+                            <p>{{ nb*10 }} Articles sont déposer sur votre site!</p>
+                        </div>
+                        <div class="col-md-2 col-sm-2 box0">
+                            <div class="box1">
+                                <span class="li_cloud" style="color: lightblue;"></span>
+                                <h3>{{ ac }}</h3>
+                            </div>
+                            <p>{{ ac }} Articles Acceptées</p>
+                        </div>
+                        <div class="col-md-2 col-sm-2 box0">
+                            <div class="box1">
+                                <span class="li_cloud" style="color: #ff865c;"></span>
+                                <h3>{{ nb*10-ac }}</h3>
+                            </div>
+                            <p>{{ nb*10-ac }} Articles en attente</p>
+                        </div>
+                        <div class="col-md-2 col-sm-2 box0">
+                            <div class="box1">
+                                <span class="li_data"></span>
+                                <h3>OK!</h3>
+                            </div>
+                            <p>Votre serveur fonctionne parfaitement. Détendez-vous et profitez.</p>
+                        </div>
+
+                    </div><!-- /row mt -->
+
+
+                    <div class="row mt">
+                        <!-- SERVER STATUS PANELS -->
+
+                        <div class="col-md-4 col-sm-4 mb">
+                            <div class="white-panel pn donut-chart">
+                                <div class="white-header">
+                                    <h5>CHARGE DU SERVEUR </h5>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-6 goleft">
+                                        <p><i class="fa fa-database"></i> {{ nb+0.1 }}%</p>
+                                    </div>
+                                </div>
+                                <canvas id="serverstatus01" height="120" width="120"></canvas>
+                                <script>
+                                    var doughnutData = [
+                                        {
+                                            value: {{ nb+0.1 }},
+                                            color:"#68dff0"
+                                        },
+                                        {
+                                            value : {{ nb-100 }},
+                                            color : "#fdfdfd"
+                                        }
+                                    ];
+                                    var myDoughnut = new Chart(document.getElementById("serverstatus01").getContext("2d")).Doughnut(doughnutData);
+                                </script>
+                            </div><! --/grey-panel -->
+                        </div><!-- /col-md-4-->
+
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 mb">
+                            <div class="weather-2 pn">
+                                <div class="weather-2-header">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-xs-6">
+                                            <p>Tunis</p>
+                                        </div>
+                                        <div class="col-sm-6 col-xs-6 goright">
+                                            <p class="small" id="demo1"></p>
+                                        </div>
+                                    </div>
+                                </div><!-- /weather-2 header -->
+                                <div class="row centered">
+                                    <img src="/uploads/tunis.jpg" class="img-circle" width="120" height="120">
+                                </div>
+                                <div class="row data">
+                                    <div class="col-sm-6 col-xs-6 goleft">
+                                        <h4><b>16 ºC</b></h4>
+                                        <h6>21º max</h6>
+                                        <h6>8º min</h6>
+                                    </div>
+                                    <div class="col-sm-6 col-xs-6 goright">
+                                        <h5><i class="fa fa-sun-o fa-2x"></i></h5>
+                                        <h6><b>Sunny</b></h6>
+                                        <h5 id="demo"></h5>
+                                    </div>
+                                    <div class="col-sm-6 col-xs-6"></div>
+                                </div>
+
+                                <script>
+                                    var d = new Date();
+                                    document.getElementById("demo").innerHTML = d.getHours()+":"+d.getMinutes();
+                                    document.getElementById("demo1").innerHTML = d.getFullYear();
+
+                                </script>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-4 mb">
+                            <div class="darkblue-panel pn">
+                                <div class="darkblue-header">
+                                    <h5>TOP Article</h5>
+                                </div>
+                                <p><img src="/bundles/assets/img/ui-zac.jpg" class="img-circle" width="80"></p>
+                                <p><b>Zac Snider</b></p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p class="small mt">MEMBER SINCE</p>
+                                        <p>2012</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p class="small mt">TOTAL SPEND</p>
+                                        <p>$ 47,60</p>
+                                        <h1 class="mt"><i class="fa fa-user fa-3x"></i></h1>
+                                        <footer>
+                                            <div class="centered">
+                                                <h5><i class="fa fa-trophy"></i> 17,988</h5>
+                                            </div>
+                                        </footer>
+                                    </div><!-- -- /darkblue panel ---->
+                                </div>
+                            </div><!-- /row -->
+                        </div>
+
+
+                    </div><!-- /row -->
+
+
+                    <div class="row">
+                        <!-- TWITTER PANEL -->
+                        <div class="col-md-4 mb" >
+                            <div class="darkblue-panel pn">
+                                <div class="darkblue-header">
+                                    <h5>DROPBOX STATICS</h5>
+                                </div>
+                                <canvas id="serverstatus02" height="120" width="120" style="width: 120px; height: 120px;"></canvas>
+                                <script>
+                                    var doughnutData = [
+                                        {
+                                            value: 60,
+                                            color:"#68dff0"
+                                        },
+                                        {
+                                            value : 40,
+                                            color : "#444c57"
+                                        }
+                                    ];
+                                    var myDoughnut = new Chart(document.getElementById("serverstatus02").getContext("2d")).Doughnut(doughnutData);
+                                </script>
+                                <p>April 17, 2014</p>
+                                <footer>
+                                    <div class="pull-left">
+                                        <h5><i class="fa fa-hdd-o"></i> 17 GB</h5>
+                                    </div>
+                                    <div class="pull-right">
+                                        <h5>60% Used</h5>
+                                    </div>
+                                </footer>
+                            </div><!-- -- /darkblue panel ---->
+                        </div><!-- /col-md-4 -->
+
+
+                        <div class="col-md-4 mb">
+                            <!-- INSTAGRAM PANEL -->
+                            <div class="instagram-panel pn">
+                                <i class="fa fa-instagram fa-4x"></i>
+                                <p>@THISISYOU<br>
+                                    5 min. ago
+                                </p>
+                                <p><i class="fa fa-comment"></i> 18 | <i class="fa fa-heart"></i> 49</p>
+                            </div>
+                        </div><!-- /col-md-4 -->
+
+                        <div class="col-md-4 col-sm-4 mb">
+                            <!-- REVENUE PANEL -->
+                            <div class="darkblue-panel pn">
+                                <div class="darkblue-header">
+                                    <h5>REVENUE</h5>
+                                </div>
+                                <div class="chart mt">
+                                    <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-line-color="#fff" data-spot-color="#fff" data-fill-color="" data-highlight-line-color="#fff" data-spot-radius="4" data-data="[{% set x = 0 %}{% for c in com if x<6 %}{{ c.prix }}{% if x<nc-1 %},{% endif %}{% set x=x+1 %}{% endfor %}]"><canvas style="display: inline-block; width: 233px; height: 75px; vertical-align: top;" width="233" height="75"></canvas></div>
+                                </div>
+                                <p class="mt"><b>{{ rev }}DT</b><br>Revenu Mensuel</p>
+                            </div>
+                        </div><!-- /col-md-4 -->
+
+                    </div><!-- /row -->
+
+                    <div class="row mt">
+                        <!--Google map-->
+                        <div id="map-container-google-3" class="z-depth-1-half map-container-3">
+                            <iframe src="https://maps.google.com/maps?q=warsaw&t=k&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+                                    style="border:0" allowfullscreen></iframe>
+                        </div>
+                        <!--custom chart end-->
+                    </div><!-- /row -->
+
+                </div><!-- /col-lg-9 END SECTION MIDDLE -->
+
+
+                <!-- **********************************************************************************************************************************************************
+                RIGHT SIDEBAR CONTENT
+                *********************************************************************************************************************************************************** -->
+
+                <div class="col-lg-3 ds">
+                    <!--COMPLETED ACTIONS DONUTS CHART-->
+                    <h3>Dernier Demande Vendeur</h3>
+
+                    {% set x = 0 %}
+                    {% for c in users if x<6 %}
+                    {% set x=x+1 %}
+                    <!-- First Action -->
+                    <div class="desc">
+                        <div class="thumb">
+                            <span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
+                        </div>
+                        <div class="details">
+                            <p><muted>2 Minutes Ago</muted><br>
+                                <a href="#">{{ c.magasin }}</a> demande d'être vendeur ! <br>
+                            </p>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+
+                    <!-- USERS ONLINE SECTION -->
+                    <h3>Dernier Articles Déposer</h3>
+                    <!-- First Member -->
+                    {% set x = 0 %}
+                    {% for c in arts if x<6 %}
+                    {% set x=x+1 %}
+                    <div class="desc">
+                        <div class="thumb">
+                            <img class="img-circle" src="/uploads/articles/{{ c.image }}" width="35px" height="35px" align="">
+                        </div>
+                        <div class="details">
+                            <p><a href="#">{{ c.titre }} </a><br>
+                                <muted>{{ c.categorie }}</muted>
+                            </p>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+
+
+
+                </div><!-- /col-lg-3 -->
+            </div><!-- --/row ---->
+        </section>
+
+    </section>
+
+
+    <!--main content end-->
+    <!--footer start-->
+    <footer class="site-footer">
+        <div class="text-center">
+            2018 - SEBCOM.tn
+            <a href="index.html#" class="go-top">
+                <i class="fa fa-angle-up"></i>
+            </a>
+        </div>
+    </footer>
+    <!--footer end-->
+</section>
+
+<!-- js placed at the end of the document so the pages load faster -->
+<script src="bundles/assets/js/jquery.js"></script>
+<script src="bundles/assets/js/jquery-1.8.3.min.js"></script>
+<script src="bundles/assets/js/bootstrap.min.js"></script>
+<script class="include" type="text/javascript" src="bundles/assets/js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="bundles/assets/js/jquery.scrollTo.min.js"></script>
+<script src="bundles/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+<script src="bundles/assets/js/jquery.sparkline.js"></script>
+
+
+<!--common script for all pages-->
+<script src="bundles/assets/js/common-scripts.js"></script>
+
+<script type="text/javascript" src="bundles/assets/js/gritter/js/jquery.gritter.js"></script>
+<script type="text/javascript" src="bundles/assets/js/gritter-conf.js"></script>
+
+<!--script for this page-->
+<script src="bundles/assets/js/sparkline-chart.js"></script>
+<script src="bundles/assets/js/zabuto_calendar.js"></script>
+
+
+
+<script type="application/javascript">
+    $(document).ready(function () {
+        $("#date-popover").popover({html: true, trigger: "manual"});
+        $("#date-popover").hide();
+        $("#date-popover").click(function (e) {
+            $(this).hide();
+        });
+
+        $("#my-calendar").zabuto_calendar({
+            action: function () {
+                return myDateFunction(this.id, false);
+            },
+            action_nav: function () {
+                return myNavFunction(this.id);
+            },
+            ajax: {
+                url: "show_data.php?action=1",
+                modal: true
+            },
+            legend: [
+                {type: "text", label: "Special event", badge: "00"},
+                {type: "block", label: "Regular event", }
+            ]
+        });
+    });
+
+
+    function myNavFunction(id) {
+        $("#date-popover").hide();
+        var nav = $("#" + id).data("navigation");
+        var to = $("#" + id).data("to");
+        console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+    }
+</script>
+
+{% endblock %}

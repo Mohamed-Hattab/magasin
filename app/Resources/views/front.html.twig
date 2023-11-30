@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SEBCOM</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Electronic Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	SmartPhone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+        function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+    <!-- Custom Theme files -->
+    {% block stylesheets %}
+    <link href="/bundles/front/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/bundles/front/css/style.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="/bundles/css/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/bundles/front/css/fasthover.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/bundles/front/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- //Custom Theme files -->
+    <!-- font-awesome icons -->
+    <link href="/bundles/front/css/font-awesome.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!-- js -->
+    <script src="/bundles/bootstrap/js/jquery.js"></script>
+    <link rel="stylesheet" href="/bundles/front/css/jquery.countdown.css" /> <!-- countdown -->
+    {% endblock %}
+    <!-- //js -->
+    <!-- web fonts -->
+    <link href='//fonts.googleapis.com/css?family=Glegoo:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <!-- //web fonts -->
+    <!-- start-smooth-scrolling -->
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $(".scroll").click(function(event){
+                event.preventDefault();
+                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+            });
+        });
+    </script>
+    <!-- //end-smooth-scrolling -->
+</head>
+
+<!-- for bootstrap working -->
+<script type="text/javascript" src="/bundles/front/js/bootstrap-3.1.1.min.js"></script>
+<!-- //for bootstrap working -->
+<!-- header modal -->
+
+
+<!-- header modal -->
+<!-- header -->
+<div class="header" id="home1">
+    <div class="container">
+        {% if name is defined %}
+        <div class="w3l_login" style="padding-right:7%;">
+                <div class="dropdown">
+                    <button style="padding:28% 35%;margin-top:20%;margin-left:120%" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="/modifierprofile/{{ id }}">Modifier </a></li>
+                        <li><a href="/connexion">LogOut</a></li>
+                    </ul>
+                </div>
+        </div>
+            {% else %}
+        <div class="w3l_login">
+                <a href="/connexion" data-toggle="modal" style="background-color:#3c43a4"><h4>Connexion</h4></a>
+        </div>
+            {% endif %}
+
+        <div class="w3l_logo">
+            <h1><a href="/">SEBCOM<span>high quality</span></a></h1>
+        </div>
+        <div class="search">
+            <input class="search_box" type="checkbox" id="search_box">
+            <label class="icon-search" for="search_box"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></label>
+            <div class="search_form">
+                <form action="" method="post">
+                    <input type="text" name="Search" placeholder="Search...">
+                    <input type="submit" value="Send">
+                </form>
+            </div>
+        </div>
+
+        <div class="cart cart box_1">
+            <form action="#"  method="post" class="last">
+                <input type="hidden" name="cmd" value="_cart" />
+                <input type="hidden" name="display" value="1" />
+                <button class="w3view-cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- //header -->
+<!-- navigation -->
+<div class="navigation">
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header nav_2">
+                <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            {% if name is defined %}
+                {% if type=="vendeuracc" %}
+            <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                <ul class="nav navbar-nav">
+                    <li><a href="/" class="act">Aceuil</a></li>
+                    <!-- Mega Menu -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Produits <b class="caret"></b></a>
+                        <ul class="dropdown-menu multi-column columns-3">
+                            <div class="row">
+                                {% if cat is defined %}
+                                    {% for c in cat %}
+                                        <div class="col-sm-3">
+                                            <ul class="multi-column-dropdown">
+                                                {% if c.idparent==0 %}
+                                                    <h6>{{ c.nom }}</h6>
+                                                    {% for b in cat %}
+                                                        {% if c.id==b.idparent %}
+                                                            <li><a href="produit?cat={{ b.nom }}">{{ b.nom }}</a></li>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                {% endif %}
+                                            </ul>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+                                <div class="clearfix"></div>
+                            </div>
+                        </ul>
+                    </li>
+
+                    <li style="background-color:#2028a0;"><a href="/ajoutarticle">Déposez votre annonce</a></li>
+                    <li class="w3pages "><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mes Ventes <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/venteatt">En Attente</a></li>
+                            <li><a href="/venteacc">Accepté</a></li>
+                            <li><a href="/venteliv">Livré</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/mesarticles">Mes annonces</a></li>
+                </ul>
+            </div>
+                    {% endif %}
+            {% if type=="client" %}
+                <div class="collapse navbar-collapse" id="bs-megadropdown-tabs" style="margin-left:2%;">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/" class="act">Aceuil</a></li>
+                        <!-- Mega Menu -->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Produits <b class="caret"></b></a>
+                            <ul class="dropdown-menu multi-column columns-3">
+                                <div class="row">
+                                    {% if cat is defined %}
+                                        {% for c in cat %}
+                                            <div class="col-sm-3">
+                                                <ul class="multi-column-dropdown">
+                                                    {% if c.idparent==0 %}
+                                                        <h6>{{ c.nom }}</h6>
+                                                        {% for b in cat %}
+                                                            {% if c.id==b.idparent %}
+                                                                <li><a href="produit?cat={{ b.nom }}">{{ b.nom }}</a></li>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </ul>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                    <div class="clearfix"></div>
+                                </div>
+                            </ul>
+                        </li>
+                        <li style="background-color:#2028a0;"><a href="/devenirvendeur">Devenir un vendeur</a></li>
+                        <li><a href="/mescommandes">MES COMMANDES</a></li>
+                        <li><a href="/devenirvendeur">A Propos</a></li>
+                    </ul>
+                </div>
+             {% endif %}
+                {% else %}
+                    <div class="collapse navbar-collapse" id="bs-megadropdown-tabs" style="margin-left:2%;">
+                        <ul class="nav navbar-nav">
+                            <li><a href="/" class="act">Aceuil</a></li>
+                            <!-- Mega Menu -->
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Produits <b class="caret"></b></a>
+                                <ul class="dropdown-menu multi-column columns-3">
+                                    <div class="row">
+                                        {% if cat is defined %}
+                                            {% for c in cat %}
+                                                <div class="col-sm-3">
+                                                    <ul class="multi-column-dropdown">
+                                                        {% if c.idparent==0 %}
+                                                            <h6>{{ c.nom }}</h6>
+                                                            {% for b in cat %}
+                                                                {% if c.id==b.idparent %}
+                                                                    <li><a href="produit?cat={{ b.nom }}">{{ b.nom }}</a></li>
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        {% endif %}
+                                                    </ul>
+                                                </div>
+                                            {% endfor %}
+                                        {% endif %}
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </ul>
+                            </li>
+                            <li style="background-color:#2028a0;"><a href="/devenirvendeur">Devenir un vendeur</a></li>
+                            <li><a href="/contactus">Nous Contacter</a></li>
+                            <li><a href="/devenirvendeur">A Propos</a></li>
+                        </ul>
+                    </div>
+            {% endif %}
+        </nav>
+    </div>
+</div>
+<!-- //navigation -->
+
+{% block body %}
+
+
+
+
+{% endblock %}
+
+
+
+{% block footer %}
+
+
+<!-- footer -->
+<div class="footer">
+    <div class="container">
+        <h5 style="color: white;text-align: center;">2019 - SEBCOM.tn</h5>
+    </div>
+
+</div>
+<!-- //footer -->
+<!-- cart-js -->
+<script src="/bundles/front/js/minicart.js"></script>
+<script>
+    w3ls.render();
+
+    w3ls.cart.on('w3sb_checkout', function (evt) {
+        var items, len, i;
+
+        if (this.subtotal() > 0) {
+            items = this.items();
+
+            for (i = 0, len = items.length; i < len; i++) {
+            }
+        }
+    });
+</script>
+<!-- //cart-js -->
+
+
+
+{% endblock %}

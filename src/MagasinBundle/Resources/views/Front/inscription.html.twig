@@ -1,0 +1,64 @@
+{% extends 'front.html.twig' %}
+
+{% block body %}
+
+
+
+    <!-- top-brands -->
+    <div class="top-brands">
+        <div class="container" style="border: 1px solid #efefef;
+             border-radius: 2px;
+             background: #F8F8F8;
+             box-shadow: 0px 1px 17px 0px rgba(224,224,224,1);">
+            <h3 style="padding-top: 3%">Inscription</h3>
+            <div class="sliderfig">
+
+
+
+
+                <div class="sap_tabs">
+                    <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+                        <h2 class="resp-accordion resp-tab-active" role="tab" aria-controls="tab_item-0"><span class="resp-arrow"></span>Sign in</h2><div class="tab-1 resp-tab-content resp-tab-content-active" aria-labelledby="tab_item-0" style="display:block">
+                            <div class="facts">
+                                <div class="register">
+                                    <form action="/inscription" method="post" style="width:50%;margin-left:25%;text-align: center">
+                                        {% if error is defined %}
+                                            <div class="alert alert-danger" style="margin-top: 2%">
+                                                <strong>Erruer !</strong> {{ error }}
+                                            </div>
+                                        {% endif %}
+                                        {% if ok is defined %}
+                                            <div class="alert alert-success" style="margin-top: 2%">
+                                                <strong>Success !</strong> {{ ok }}
+                                            </div>
+                                        {% endif %}
+                                        <input name="nom" placeholder="Nom" type="text" required="">
+                                        <input name="prenom" placeholder="Prenom" type="text" required="">
+                                        <input name="login" placeholder="Pseudo" type="text" required="">
+                                        <input name="adresse" placeholder="Adresse" type="text" required="">
+                                        <input name="tel" placeholder="Num Tel" type="text" required="">
+                                        <input name="email" placeholder="E-mail" type="text" required="">
+                                        <input name="password" placeholder="Password" type="password" required="">
+                                        <div class="sign-up">
+                                            <input type="submit" value="Inscription">
+                                        </div>
+
+
+                                    </form>
+                                </div>
+                                </br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- //top-brands -->
+
+
+{% endblock %}

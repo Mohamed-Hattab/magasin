@@ -1,0 +1,104 @@
+{% extends 'front.html.twig' %}
+
+
+
+{% block body %}
+
+
+
+    <!-- top-brands -->
+    <div class="top-brands">
+        <div class="container">
+            <h3>Déposer votre annonce </h3>
+            <div class="sliderfig">
+
+
+                <div class="container">
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <td colspan="1">
+                                <form action="/ajoutarticle" method="post" class="well form-horizontal"style="margin-right:10%;margin-left: 10%" enctype="multipart/form-data">
+
+                                    {% if ok is defined %}
+                                        <div style="text-align: center;width: 70%;margin-left: 20%;" class="alert alert-success agileits" role="alert">
+                                            <strong>Merci !</strong> Votre annonce va être vérifiée par nos modérateurs et sera bientôt en ligne.
+                                        </div>
+                                    {% endif %}
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Catégorie</label>
+                                            <div class="col-md-8 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
+                                                    <select name="categorie"  class="selectpicker form-control">
+                                                        <option value="0"></option>
+                                                        {% if cat is defined %}
+                                                        {% for c in cat %}
+                                                            {% if c.idparent==0 %}
+                                                            <option value="{{ c.nom }}" disabled>{{ c.nom }}</option>
+                                                        {% for a in cat %}
+                                                            {% if a.idparent==c.id %}
+                                                                <option value="{{ c.nom }}">{{ c.nom }}</option>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                        {% endif %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Titre</label>
+                                                <div class="col-md-8 inputGroupContainer">
+                                                    <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-bookmark"></i></span><input id="fullName" name="titre"  class="form-control" required="true" value="" type="text"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Description</label>
+                                                <div class="col-md-8 inputGroupContainer">
+                                                    <div class="input-group"><textarea style="width: 266%;" id="fullName" name="description" class="form-control" required="true" value="" type="text"></textarea></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Prix</label>
+                                                <div class="col-md-8 inputGroupContainer">
+                                                    <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-bookmark"></i></span><input id="fullName" name="prix" class="form-control" required="true" value="" type="text"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Quantité</label>
+                                                <div class="col-md-8 inputGroupContainer">
+                                                    <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-bookmark"></i></span><input id="addressLine1" name="quantite" class="form-control" required="true" value="" type="number"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-4 control-label">Photos</label>
+                                                <div class="col-xs-6" style="margin-left: 2% ;    width: 63%;">
+                                                    <div class="form-group">
+                                                        <input type="file" name="file">               </div>
+                                                </div>
+                                            </div>
+
+                                        <div class="sign-up" style="margin-left: 50%">
+                                            <input style="outline:none;border:none;background:#212121;padding:10px 0;color:#fff;width:40%;font-size:1em;text-transform:uppercase;margin:2em 0 0;" type="submit" value="Ajouter">
+                                        </div>
+
+
+                                    </fieldset>
+                                </form>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- //top-brands -->
+
+
+{% endblock %}

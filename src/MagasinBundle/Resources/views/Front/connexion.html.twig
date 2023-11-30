@@ -1,0 +1,54 @@
+{% extends 'front.html.twig' %}
+
+{% block body %}
+
+
+
+    <!-- top-brands -->
+    <div class="top-brands">
+        <div class="container">
+            <h3>Connecter Vous</h3>
+            <div class="sliderfig">
+
+
+
+
+                <div class="sap_tabs">
+                    <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+                        <h2 class="resp-accordion resp-tab-active" role="tab" aria-controls="tab_item-0"><span class="resp-arrow"></span>Sign in</h2><div class="tab-1 resp-tab-content resp-tab-content-active" aria-labelledby="tab_item-0" style="display:block">
+                            <div class="facts">
+                                <div class="register">
+                                    <form action="/connexion" method="post" style="width:50%;margin-left:25%;text-align: center">
+                                        <input name="Email" placeholder="Email Address" type="text" required="">
+                                        <input name="Password" placeholder="Password" type="password" required="">
+                                        {% if error is defined %}
+                                            <div class="alert alert-danger" style="margin-top: 2%">
+                                                <strong>Erreur !</strong> {{ error }}
+                                            </div>
+                                        {% endif %}
+                                        <div class="sign-up">
+                                            <input type="submit" value="Sign in">
+                                        </div>
+
+                                    </form>
+                                </div>
+                                </br>
+                                <div style="text-align: center">
+                                    <a href="">Mot de passe oubliées&nbsp;?</a> |
+                                    <a href="/inscription">Créer un compte</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- //top-brands -->
+
+
+{% endblock %}

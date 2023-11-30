@@ -1,0 +1,27 @@
+MagasinBundle\Entity\Mail:
+    type: entity
+    table: null
+    repositoryClass: MagasinBundle\Repository\MailRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+        email:
+            type: string
+            length: 255
+        tel:
+            type: string
+            length: 255
+        message:
+            type: string
+            length: 255
+        date:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

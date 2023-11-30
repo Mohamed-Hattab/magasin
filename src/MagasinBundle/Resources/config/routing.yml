@@ -1,0 +1,158 @@
+
+magasin_admin:
+    path:     /admin
+    defaults: { _controller: MagasinBundle:Default:admin }
+magasin_adminhome:
+    path:     /adminhome
+    defaults: { _controller: MagasinBundle:Default:adminhome }
+magasin_ajoutcat:
+    path:     /ajoutcat
+    defaults: { _controller: MagasinBundle:Categorie:ajoutcat }
+magasin_modifiercat:
+    path:     /modifiercat/{id}
+    defaults: { _controller: MagasinBundle:Categorie:modifiercat }
+magasin_supprimercat:
+    path:     /supprimercat/{id}
+    defaults: { _controller: MagasinBundle:Categorie:supprimercat }
+magasin_articlett:
+    path:     /articleatt
+    defaults: { _controller: MagasinBundle:Article:articleatt}
+magasin_articlecc:
+    path:     /articleacc
+    defaults: { _controller: MagasinBundle:Article:articleacc}
+magasin_modifierart:
+    path:     /modifierart/{id}
+    defaults: { _controller: MagasinBundle:Article:modifierart}
+magasin_supprimerart:
+    path:     /supprimerart/{id}
+    defaults: { _controller: MagasinBundle:Article:supprimerart }
+magasin_employe:
+    path:     /employe
+    defaults: { _controller: MagasinBundle:Employe:employe }
+magasin_modifieremp:
+    path:     /modifieremp/{id}
+    defaults: { _controller: MagasinBundle:Employe:modifieremp }
+magasin_supprimeremp:
+    path:     /supprimeremp/{id}
+    defaults: { _controller: MagasinBundle:Employe:supprimeremp }
+magasin_vendeuracc:
+    path:     /vendeuracc
+    defaults: { _controller: MagasinBundle:Vendeur:vendeuracc }
+magasin_supprimervac:
+    path:     /supprimervac/{id}
+    defaults: { _controller: MagasinBundle:Vendeur:supprimervac }
+magasin_vendeuratt:
+    path:     /vendeuratt
+    defaults: { _controller: MagasinBundle:Vendeur:vendeuratt }
+magasin_supprimervat:
+    path:     /supprimervat/{id}
+    defaults: { _controller: MagasinBundle:Vendeur:supprimervat }
+magasin_acceptervat:
+    path:     /acceptervat/{id}
+    defaults: { _controller: MagasinBundle:Vendeur:acceptervat }
+magasin_accepterart:
+    path:     /accepterart/{id}
+    defaults: { _controller: MagasinBundle:Article:accepterart }
+magasin_vente:
+    path:     /vente
+    defaults: { _controller: MagasinBundle:Vendeur:vente }
+magasin_mail:
+    path:     /mail
+    defaults: { _controller: MagasinBundle:Default:mail }
+magasin_commandeacc:
+    path:     /commandeacc
+    defaults: { _controller: MagasinBundle:Default:commandeacc }
+magasin_livcom:
+    path:     /livcom/{id}
+    defaults: { _controller: MagasinBundle:Default:livcom }
+magasin_commandeliv:
+    path:     /commandeliv
+    defaults: { _controller: MagasinBundle:Default:commandeliv }
+magasin_slideshow:
+    path:     /slideshow
+    defaults: { _controller: MagasinBundle:Default:slideshow }
+magasin_livreur:
+    path:     /livreur
+    defaults: { _controller: MagasinBundle:Default:livreur }
+magasin_localiser:
+    path:     /localiser/{id}
+    defaults: { _controller: MagasinBundle:Default:localiser }
+
+
+#front---------------
+
+magasin_homepage:
+    path:     /
+    defaults: { _controller: MagasinBundle:Front:index }
+magasin_homepage:
+    path:     /index
+    defaults: { _controller: MagasinBundle:Front:index }
+magasin_connexion:
+    path:     /connexion
+    defaults: { _controller: MagasinBundle:Front:connexion }
+magasin_modifierprofile:
+    path:     /modifierprofile/{id}
+    defaults: { _controller: MagasinBundle:Front:modifierprofile }
+magasin_inscription:
+    path:     /inscription
+    defaults: { _controller: MagasinBundle:Front:inscription }
+magasin_ajoutarticle:
+    path:     /ajoutarticle
+    defaults: { _controller: MagasinBundle:Front:ajoutarticle }
+magasin_devenirvendeur:
+    path:     /devenirvendeur
+    defaults: { _controller: MagasinBundle:Front:devenirvendeur }
+magasin_inscrivendeur:
+    path:     /inscrivendeur
+    defaults: { _controller: MagasinBundle:Front:inscrivendeur }
+magasin_mesarticles:
+    path:     /mesarticles
+    defaults: { _controller: MagasinBundle:Front:mesarticles }
+magasin_produit:
+    path:     /produit
+    defaults: { _controller: MagasinBundle:Front:produit }
+magasin_error:
+    path:     /error
+    defaults: { _controller: MagasinBundle:Front:error }
+magasin_suppart:
+    path:     /suppart/{id}
+    defaults: { _controller: MagasinBundle:Front:suppart }
+magasin_commande:
+    path:     /commande
+    defaults: { _controller: MagasinBundle:Front:commande }
+magasin_passercommande:
+    path:     /passercommande
+    defaults: { _controller: MagasinBundle:Front:passercommande }
+magasin_venteatt:
+    path:     /venteatt
+    defaults: { _controller: MagasinBundle:Front:venteatt }
+magasin_venteacc:
+    path:     /venteacc
+    defaults: { _controller: MagasinBundle:Front:venteacc }
+magasin_venteliv:
+    path:     /venteliv
+    defaults: { _controller: MagasinBundle:Front:venteliv }
+magasin_acceptervnt:
+    path:     /acceptervnt
+    defaults: { _controller: MagasinBundle:Front:acceptervnt }
+magasin_livrervnt:
+    path:     /livrervnt
+    defaults: { _controller: MagasinBundle:Front:livrervnt }
+magasin_supvnt:
+    path:     /supvnt
+    defaults: { _controller: MagasinBundle:Front:supvnt }
+magasin_mescommandes:
+    path:     /mescommandes
+    defaults: { _controller: MagasinBundle:Front:mescommandes }
+magasin_contactus:
+    path:     /contactus
+    defaults: { _controller: MagasinBundle:Front:contactus }
+magasin_modifart:
+    path:     /modifart/{id}
+    defaults: { _controller: MagasinBundle:Front:modifart}
+magasin_upload:
+    path:     /upload
+    defaults: { _controller: MagasinBundle:Front:upload}
+magasin_view:
+    path:     /view
+    defaults: { _controller: MagasinBundle:Front:view}

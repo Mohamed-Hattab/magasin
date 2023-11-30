@@ -1,0 +1,17 @@
+MagasinBundle\Entity\Categorie:
+    type: entity
+    table: null
+    repositoryClass: MagasinBundle\Repository\CategorieRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: 255
+        idparent:
+            type: integer
+    lifecycleCallbacks: {  }

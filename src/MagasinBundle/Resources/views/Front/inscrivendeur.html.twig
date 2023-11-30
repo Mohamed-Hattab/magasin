@@ -1,0 +1,88 @@
+{% extends 'front.html.twig' %}
+
+{% block body %}
+
+
+
+    <!-- top-brands -->
+    <div class="top-brands">
+        <div class="container">
+            <table class="table table-striped">
+                <tbody>
+                <tr>
+                    <td colspan="1">
+                        <h2 style="text-align: center;color: #0f0f0f;padding-bottom:3%;">Vos informations</h2>
+                        <form action="/inscrivendeur" method="post" class="well form-horizontal"style="margin-right:10%;margin-left: 10%">
+                            <fieldset>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Nom</label>
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input id="fullName" name="nom"  class="form-control" required="true" value="" type="text"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Prenom</label>
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span><input id="fullName" name="prenom" class="form-control" required="true" value="" type="text"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Nom du magasin</label>
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-shopping-cart"></i></span><input id="fullName" name="magasin" class="form-control" required="true" value="" type="text"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Adresse</label>
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span><input id="addressLine1" name="adresse" class="form-control" required="true" value="" type="text"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Num Tel</label>
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span><input id="phoneNumber" name="tel" class="form-control" required="true" value="" type="text"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">E-mail</label>
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span><input id="email" name="email" class="form-control" required="true" value="" type="text"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-4 control-label">Mot de passe</label>
+                                        <div class="col-md-8 inputGroupContainer">
+                                            <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span><input id="fullName" name="password" class="form-control" required="true" placeholder="" type="password"></div>
+                                        </div>
+                                    </div>
+                                <div class="sign-up" style="margin-left: 50%" >
+                                    <input style="outline:none;border:none;background:#212121;padding:10px 0;color:#fff;width:40%;font-size:1em;text-transform:uppercase;margin:2em 0 0;" type="submit" value="Inscription">
+                                </div>
+
+                                {% if error is defined %}
+                                    <div class="alert alert-danger" style="text-align:center;margin-top: 2%;margin-left: 20%;">
+                                        <strong>Erruer !</strong> {{ error }}
+                                    </div>
+                                    <br>
+                                {% endif %}
+                                {% if ok is defined %}
+                                    <div class="alert alert-success " style="text-align:center;margin-top: 2%;margin-left: 20%;">
+                                        <strong>Success !</strong> {{ ok }}
+                                    </div>
+                                    <br>
+                                {% endif %}
+
+
+                            </fieldset>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- //top-brands -->
+
+
+{% endblock %}

@@ -1,0 +1,8 @@
+magasin:
+    resource: "@MagasinBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+

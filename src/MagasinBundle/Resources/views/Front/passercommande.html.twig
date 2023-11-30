@@ -1,0 +1,49 @@
+{% extends 'front.html.twig' %}
+
+
+
+{% block body %}
+    {% block javascripts %}
+
+        <script type="text/javascript" src="{{ asset('/bundles/js/pageFunctions.js')}}"></script>
+
+    {% endblock %}
+
+
+    <!-- top-brands -->
+    <div class="top-brands">
+        <div class="container">
+            <h3>Succès!</h3>
+            <div class="sliderfig">
+
+
+                <div class="container">
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <td colspan="1">
+                                <form action="/ajoutarticle" method="post" class="well form-horizontal"style="color:black;">
+
+                                    <div class="showback" style="text-align: center;">
+                                        <h4><i class="fa fa-angle-right"></i> Votre commande a été prise en compte
+                                            et sera bientôt traitée!</h4>
+                                    </br>
+                                        <a href="/"><button type="button" class="btn btn-success">Retour</button></a>
+                                    </div>
+
+
+                                </form>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- //top-brands -->
+
+
+{% endblock %}

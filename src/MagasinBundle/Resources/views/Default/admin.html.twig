@@ -1,0 +1,66 @@
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Administartion - SEBCOM</title>
+
+    <link rel="stylesheet" href="bundles/css/style.css" media="screen" type="text/css" />
+
+</head>
+
+{% block stylesheets %}
+<style type="text/css">
+
+    .alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    }
+    .alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    }
+    body {
+        background-image:url("{{ asset('bundles/images/backgroundLogin3.jpg')}}");
+        background-size: cover;
+    }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <img src="" style="margin-left: 43%"/>
+
+    <img src="/bundles/images/techri.png" style="margin-left: 43%"/>
+
+    <span href="#" class="button" id="toggle-login">Bienvenu !</span>
+
+    <div id="login">
+        <div id="triangle"></div>
+        <h1>Se connecter</h1>
+        <form name="f" method="POST" action="/admin">
+            <input type="text" name="Pseudo" placeholder="Login" />
+            <input type="password" name="Password" placeholder="Mot de passe" />
+
+            {% if error is defined %}
+                <div class="alert alert-danger" >
+                    <strong>Erreur !</strong> {{ error }}
+                </div>
+            {% endif %}
+            {% if name is defined %}
+                <div class="alert alert-danger" >
+                    <strong>Erreur !</strong> {{ name }}
+                </div>
+            {% endif %}
+
+            <input type="submit" value="Connexion" />
+        </form>
+
+    </div>
+
+    <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
+
+    <script src="js/index.js"></script>
+
+{% endblock %}

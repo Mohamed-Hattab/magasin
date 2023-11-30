@@ -1,0 +1,40 @@
+{% extends 'front.html.twig' %}
+
+
+
+{% block body %}
+    {% block javascripts %}
+
+        <script type="text/javascript" src="{{ asset('/bundles/js/pageFunctions.js')}}"></script>
+
+    {% endblock %}
+
+
+    <!-- top-brands -->
+    <div class="top-brands">
+        <div class="container">
+
+            <div class="sliderfig">
+
+
+                <div class="container">
+
+                    <form action="" method="POST">
+
+
+                        <div class="showback" style="text-align: center;">
+                            <h4><i class="fa fa-angle-right"></i> L'article <b>{{ nom }}</b> a été supprimé avec succès</h4>
+                            <a href="/mesarticles"><button type="button" class="btn btn-success">Retour</button></a>
+                        </div>
+                    </form>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- //top-brands -->
+
+
+{% endblock %}

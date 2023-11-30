@@ -1,0 +1,89 @@
+{% extends 'front.html.twig' %}
+
+
+
+{% block body %}
+    {% block javascripts %}
+
+        <script type="text/javascript" src="{{ asset('/bundles/js/pageFunctions.js')}}"></script>
+
+    {% endblock %}
+
+
+    <!-- top-brands -->
+    <div class="top-brands">
+        <div class="container">
+            <h3>Consulter vos commande en attente </h3>
+            <div class="sliderfig">
+
+
+                <div class="container">
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <td colspan="1">
+                                <form action="/ajoutarticle" method="post" class="well form-horizontal"style="color:black;">
+                                    <h4><i class="fa fa-angle-right"></i> Liste de vos commande en attente</h4><hr>
+                                    <input type="text" id="rech" style="height: 40px;width:40%;margin-left:60%" placeholder="Search.." /><br/><br/>
+                                    <table class="table table-striped table-advance table-hover" id="tab" >
+
+
+                                        <thead >
+                                        <tr>
+                                            <th><i class="fa fa-bookmark"></i> Titre</th>
+                                            <th><i class=" fa fa-bookmark"></i> Prix</th>
+                                            <th><i class=" fa fa-bookmark"></i> Quantité</th>
+                                            <th><i class=" fa fa-bookmark"></i> Date Commande</th>
+                                            <th><i class=" fa fa-bookmark"></i> Nom Client</th>
+                                            <th><i class=" fa fa-bookmark"></i> Tel Client</th>
+                                            <th><i class=" fa fa-bookmark"></i> Adresse Client</th>
+                                            <th><i class=" fa fa-bookmark"></i> Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody style="font-weight: bold">
+
+                                        {% if t is defined %}
+                                            {% for c in t %}
+                                                {%  if c.type=="commandeatt" %}
+                                                    <tr>
+                                                        <td>{{ c.titre }}</td>
+                                                        <td>{{ c.prix }}</td>
+                                                        <td>{{ c.qte }}</td>
+                                                        <td>{{ c.date }}</td>
+                                                        <td>{{ c.client.nom }} {{ c.client.prenom }}</td>
+                                                        <td>{{ c.client.tel }}</td>
+                                                        <td>{{ c.client.adresse }}</td>
+                                                        <td style="text-align: center">
+                                                            <a href="/acceptervnt?id={{ c.ids }}"><button type="button" class="btn btn-success btn-xs"><i class="fa fa-check "></i></button></a>
+                                                            <a href="/supvnt?id={{ c.ids }}"><button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-trash-o "></i></button></a>
+                                                        </td>
+                                                    </tr>
+                                                {% endif %}
+
+
+                                            {% endfor %}
+                                        {% endif %}
+
+                                        {% if error is defined %}
+                                            <th>{{ error }}</th>
+                                            <th></th>
+                                        {% endif %}
+
+
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- //top-brands -->
+
+
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'front.html.twig' %}
+
+
+
+{% block body %}
+    {% block javascripts %}
+
+        <script type="text/javascript" src="{{ asset('/bundles/js/pageFunctions.js')}}"></script>
+
+    {% endblock %}
+
+
+    <!-- top-brands -->
+    <div class="top-brands">
+        <div class="container">
+            <h3>{{ ctg }} </h3>
+            <div class="sliderfig">
+
+
+                <div class="container">
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <td colspan="1">
+                                <form action="#" method="post" class="well form-horizontal"style="color:black;">
+                                    <h4><i class="fa fa-angle-right"></i> Liste Des Articles</h4><hr>
+                                    <input type="text" id="rech" style="height: 40px;width:40%;margin-left:60%" placeholder="Search.." /><br/><br/>
+                                    <table class="table table-striped table-advance table-hover" id="tab" >
+
+
+                                        <thead >
+                                        <tr>
+                                            <th><i class="fa fa-bookmark"></i> Image</th>
+                                            <th><i class="fa fa-bookmark"></i> Titre</th>
+                                            <th><i class=" fa fa-bookmark"></i> Prix</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody style="font-weight: bold">
+
+
+                                        {% if art is defined %}
+                                            {% for c in art %}
+                                        {% if c.type=="articleacc" %}
+                                            <form action="#" method="post">
+                                                <tr>
+                                                    <td><img src="/uploads/articles/{{ c.image }}" style="height: 150px;width: 150px;"></td>
+                                                    <td><a href="/view?id={{ c.id }}"><h4 style="margin-top: 60px;">{{ c.titre }}</h4></a></td>
+                                                    <td><h4 style="margin-top: 60px;">{{ c.prix }} TND</h4></td>
+                                                    <input type="hidden" name="cmd" value="_cart" />
+                                                    <input type="hidden" name="add" value="1" />
+                                                    <input type="hidden" name="w3ls_item" value="{{ c.titre }}" />
+                                                    <input type="hidden" name="amount" value="{{ c.prix }}" />
+                                                    <td style="text-align: center">
+                                                        <button type="submit" class="w3ls-cart" style="margin-top: 20%;">Add to cart</button>
+                                                    </td>
+                                                </tr>
+                                            </form>
+                                            {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+
+                                        {% if error is defined %}
+                                            <th>{{ error }} {{ ctg }}</th>
+                                            <th></th>
+                                        {% endif %}
+
+
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- //top-brands -->
+
+
+
+
+
+{% endblock %}

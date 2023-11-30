@@ -1,0 +1,18 @@
+MagasinBundle\Entity\Slideshow:
+    type: entity
+    table: null
+    repositoryClass: MagasinBundle\Repository\SlideshowRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        titre:
+            type: string
+            length: 255
+        image:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

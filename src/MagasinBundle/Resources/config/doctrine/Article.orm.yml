@@ -1,0 +1,33 @@
+MagasinBundle\Entity\Article:
+    type: entity
+    table: null
+    repositoryClass: MagasinBundle\Repository\ArticleRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        categorie:
+            type: string
+            length: 255
+        titre:
+            type: string
+            length: 255
+        prix:
+            type: float
+        image:
+            type: string
+            length: 255
+        quantite:
+            type: integer
+        description:
+            type: string
+            length: 255
+        idvendeur:
+            type: integer
+        type:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

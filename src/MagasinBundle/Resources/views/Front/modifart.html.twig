@@ -1,0 +1,96 @@
+{% extends 'front.html.twig' %}
+
+
+
+{% block body %}
+
+
+
+    <!-- top-brands -->
+    <div class="top-brands">
+        <div class="container">
+            <h3>Modifier votre annonce </h3>
+            <div class="sliderfig">
+
+
+                <div class="container">
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <td colspan="1">
+                                <form action="/modifart/{{ ids }}" method="post" class="well form-horizontal"style="margin-right:10%;margin-left: 10%" enctype="multipart/form-data">
+                                    <fieldset>
+                                        {% for c in art %}
+                                            <div class="form-group">
+                                            <label class="col-md-4 control-label">Catégorie</label>
+                                            <div class="col-md-8 inputGroupContainer">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon" style="max-width: 100%;"><i class="glyphicon glyphicon-list"></i></span>
+                                                    <select name="categorie"  class="selectpicker form-control">
+                                                        <option value="0"></option>
+                                                        {% for x in cat %}
+                                                            {% if x.idparent!=0 %}
+                                                                {% if  c.categorie  == x.nom %}
+                                                                <option selected value="{{ x.nom }}">{{ x.nom }}</option>
+                                                                {% else %}
+                                                                    <option value="{{ x.nom }}">{{ x.nom }}</option>
+                                                                {% endif %}
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Titre</label>
+                                            <div class="col-md-8 inputGroupContainer">
+                                                <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-bookmark"></i></span><input id="fullName" name="titre"  class="form-control" required="true" value="{{ c.titre }}" type="text"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Description</label>
+                                            <div class="col-md-8 inputGroupContainer">
+                                                <div class="input-group"><textarea style="width: 266%;" id="fullName" name="description" class="form-control" required="true" value="" type="text">{{ c.description }}</textarea></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Prix</label>
+                                            <div class="col-md-8 inputGroupContainer">
+                                                <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-bookmark"></i></span><input id="fullName" name="prix" class="form-control" required="true" value="{{ c.prix }}" type="text"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Quantité</label>
+                                            <div class="col-md-8 inputGroupContainer">
+                                                <div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-bookmark"></i></span><input id="addressLine1" name="quantite" class="form-control" required="true" value="{{ c.quantite }}" type="number"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-4 control-label">Photos</label>
+                                            <div class="col-xs-6" style="margin-left: 2% ;    width: 63%;">
+                                                <div class="form-group">
+                                                    <input type="file" name="file" >               </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="sign-up" style="margin-left: 50%" >
+                                            <input style="outline:none;border:none;background:#212121;padding:10px 0;color:#fff;width:40%;font-size:1em;text-transform:uppercase;margin:2em 0 0;" type="submit" value="Modifier">
+                                        </div>
+
+                                        {% endfor %}
+                                    </fieldset>
+                                </form>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- //top-brands -->
+
+
+{% endblock %}

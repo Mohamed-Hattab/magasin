@@ -1,0 +1,18 @@
+MagasinBundle\Entity\Admin:
+    type: entity
+    table: null
+    repositoryClass: MagasinBundle\Repository\AdminRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        login:
+            type: string
+            length: 255
+        password:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

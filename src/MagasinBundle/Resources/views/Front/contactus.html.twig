@@ -1,0 +1,30 @@
+{% extends 'front.html.twig' %}
+
+{% block body %}
+
+
+
+    <!-- top-brands -->
+    <div class="top-brands">
+        <div class="container">
+            <h3>Nous Contacter !</h3>
+            <div class="col-md-7 contact-left" style="    margin-left: 15%;">
+                {% if ok is defined %}
+                <div class="alert alert-success agileits" role="alert" style="text-align: center">
+                    <strong>Succès !</strong> Votre message a été envoyé avec succès
+                </div>
+                {% endif %}
+                <form action="/contactus" method="post">
+                    <input type="text" name="nom" placeholder="Nom" required="">
+                    <input type="email" name="email" placeholder="Email" required="">
+                    <input type="text" name="tel" placeholder="Telephone" required="">
+                    <textarea name="message" placeholder="Message..." required=""></textarea>
+                    <input type="submit" value="Envoyer" style="margin-left: 33%;">
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- //top-brands -->
+
+
+{% endblock %}
